@@ -17,7 +17,6 @@ const InputForm = () => {
   ];
 
   const [todoValue, setTodoValue] = useState("");
-  const [currentTodo, setCurrentTodo] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
   const [category, setCategory] = useState("");
@@ -49,7 +48,6 @@ const InputForm = () => {
           category: category,
         })
       );
-      setCurrentTodo(todoValue);
       setTodoValue("");
       setShowSuccess(true);
       setShowError(false);
@@ -105,10 +103,13 @@ const InputForm = () => {
       {/* Todo List */}
       <div className="flex flex-col gap-4">
         <ul className="grid grid-cols-1 gap-4 border border-gray-600 shadow-todoShadow mt-6 p-4">
-          {todosItem &&
-            todosItem.map((item) => (
-              <TodoList todo={item.todo} key={item.id} />
-            ))}
+          {todosItem.length > 0 ? (
+            todosItem.map((item) => <TodoList todo={item} key={item.id} />)
+          ) : (
+            <p className="text-center text-base text-yellow-500 font-titleFont font-medium">
+              Your todo list is Empty!
+            </p>
+          )}
         </ul>
       </div>
 
