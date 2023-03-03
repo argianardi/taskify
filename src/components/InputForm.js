@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addTodos } from "../utils/redux/features/todoSlice";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
 import TodoList from "./TodoList";
 
 const InputForm = () => {
+  const dispatch = useDispatch();
+
   const options = [
-    { _id: 1000, title: "categories" },
-    { _id: 1001, title: "personal" },
-    { _id: 1002, title: "business" },
-    { _id: 1003, title: "others" },
+    { id: 1000, title: "categories" },
+    { id: 1001, title: "personal" },
+    { id: 1002, title: "business" },
+    { id: 1003, title: "others" },
   ];
 
   const [todoValue, setTodoValue] = useState("");
@@ -20,7 +24,7 @@ const InputForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // handle form submit event
+  // handle form submit todo
   const handleTodo = (e) => {
     e.preventDefault();
 
@@ -38,6 +42,13 @@ const InputForm = () => {
       setShowError(true);
       setShowSuccess(false);
     } else {
+      dispatch(
+        addTodos({
+          id: Date.now(),
+          todo: todoValue,
+          category: category,
+        })
+      );
       setCurrentTodo(todoValue);
       setTodoValue("");
       setShowSuccess(true);
@@ -74,7 +85,7 @@ const InputForm = () => {
             className="w-full h-full text-center capitalize outline-none bg-bodyColor border-[1px] border-gray-400 px-1 cursor-pointer appearance-none rounded-md focus-visible:border-orange-600 hover:border-white"
           >
             {options.map((item) => (
-              <option key={item._id}>{item.title}</option>
+              <option key={item.id}>{item.title}</option>
             ))}
           </select>
           <span className="absolute right-3 top-4">
