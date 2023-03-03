@@ -16,6 +16,7 @@ const Footer = () => {
         <a
           href="https://github.com/argianardi"
           target="_blank"
+          rel="noopener noreferrer"
           className="footerIcon"
         >
           <AiOutlineGithub />
@@ -23,6 +24,7 @@ const Footer = () => {
         <a
           href="mailto:argianardi14@gmail.com"
           target="_blank"
+          rel="noopener noreferrer"
           className="footerIcon"
         >
           <AiFillMail />
@@ -30,6 +32,7 @@ const Footer = () => {
         <a
           href="https://argi.vercel.app/"
           target="_blank"
+          rel="noopener noreferrer"
           className="footerIcon"
         >
           <AiOutlineGlobal />
@@ -37,6 +40,7 @@ const Footer = () => {
         <a
           href="https://www.linkedin.com/in/argianardiprasetya/"
           target="_blank"
+          rel="noopener noreferrer"
           className="footerIcon"
         >
           <AiFillLinkedin />
