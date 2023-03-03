@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodos } from "../utils/redux/features/todoSlice";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
@@ -8,7 +8,7 @@ import TodoList from "./TodoList";
 
 const InputForm = () => {
   const dispatch = useDispatch();
-
+  const todosItem = useSelector((state) => state.todos.todosList);
   const options = [
     { id: 1000, title: "categories" },
     { id: 1001, title: "personal" },
@@ -105,7 +105,10 @@ const InputForm = () => {
       {/* Todo List */}
       <div className="flex flex-col gap-4">
         <ul className="grid grid-cols-1 gap-4 border border-gray-600 shadow-todoShadow mt-6 p-4">
-          <TodoList todoValue={currentTodo} />
+          {todosItem &&
+            todosItem.map((item) => (
+              <TodoList todo={item.todo} key={item.id} />
+            ))}
         </ul>
       </div>
 
