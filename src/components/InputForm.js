@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodos } from "../utils/redux/features/todoSlice";
+import { motion } from "framer-motion";
+import { addTodos, removeTodos } from "../utils/redux/features/todoSlice";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
 import TodoList from "./TodoList";
@@ -22,6 +23,7 @@ const InputForm = () => {
   const [category, setCategory] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showRemove, setShowRemove] = useState(false);
 
   // handle form submit todo
   const handleTodo = (e) => {
@@ -111,6 +113,19 @@ const InputForm = () => {
             </p>
           )}
         </ul>
+
+        {/* Button Remove All Todos, appears when the number of todo is more than one */}
+        {todosItem.length > 1 && (
+          <motion.button
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            onClick={() => setShowRemove(true)}
+            className="w-40 h-8 text-sm font-titleFont text-orange-500 hover:text-red-500 font-semibold mx-auto bg-transparent border-[1px] border-gray-500 hover:border-red-500 duration-300"
+          >
+            Remove All Todos
+          </motion.button>
+        )}
       </div>
 
       {/* Show Error Message (while showError state is true) */}
@@ -118,6 +133,35 @@ const InputForm = () => {
 
       {/* Show Success Message (while showSuccess state is true) */}
       {showSuccess && <SuccessMessage successMessage={successMessage} />}
+
+      {/* Question to be sure will delete all todos*/}
+      {showRemove && (
+        <div className="w-full h-screen fixed bg-bodyColor top-0 left-0 bg-opacity-60">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 py-4 bg-bodyColor border border-red-500 rounded-md z-50 flex flex-col gap-4 shadow-todoShadow">
+            <p className="text-xl text-center font-medium text-red-500">
+              Are you sure to{" "}
+              <span className="font-semibold underline underline-offset-2 decoration-[1px]">
+                remove
+              </span>{" "}
+              all the todos?
+            </p>
+            <div className="flex items-center gap-4 justify-center">
+              <button
+                onClick={() => dispatch(removeTodos()) & setShowRemove(false)}
+                className="px-6 py-2 text-base font-titleFont text-orange-500 hover:text-red-500 font-semibold bg-transparent border-[1px] border-gray-500 hover:border-red-500 duration-300"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowRemove(false)}
+                className="px-6 py-2 text-base font-titleFont text-orange-500 hover:text-green-500 font-semibold bg-transparent border-[1px] border-gray-500 hover:border-green-500 duration-300"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
