@@ -75,7 +75,7 @@ const InputForm = () => {
           onChange={(e) => setTodoValue(e.target.value)}
           value={todoValue}
           type="text"
-          className="bg-bodyColor w-[80%] h-12 mdl:h-full border-[1px] border-gray-400 py-2 px-4 placeholder:text-gray-400 text-white text-base placeholder:text-sm tracking-wide rounded-md outline-none focus-visible:border-orange-600 hover:border-white"
+          className="bg-bodyColor w-full mdl:w-[80%] h-12 mdl:h-full border-[1px] border-gray-400 py-2 px-4 placeholder:text-gray-400 text-white text-base placeholder:text-sm tracking-wide rounded-md outline-none focus-visible:border-orange-600 hover:border-white"
           placeholder="Enter your Todo..."
         />
 
