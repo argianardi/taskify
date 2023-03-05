@@ -8,24 +8,19 @@
   .footerIcon {
     @apply w-7 h-7 rounded-full bg-gray-800 hover:bg-gray-900 cursor-pointer duration-500 text-gray-400 hover:text-white border border-transparent hover:border-gray-500 flex justify-center items-center;
   }
+  .categoryP {
+    @apply w-full h-1/4 border-[1px] border-gray-500 text-gray-300 hover:text-white duration-300 flex items-center justify-center cursor-pointer;
+  }
 }
 
-.bb {
-  border: solid blue;
-}
-
-.br {
-  border: solid red;
-}
-
-.bh {
-  border: solid black;
-}
-
-.bg {
-  border: solid green;
-}
-
-.by {
-  border: solid yellow;
+.bg-abstract {
+  background-image: linear-gradient(
+    to bottom right,
+    #1d2b53,
+    #2980b9,
+    #2ecc71,
+    red,
+    #0d3b66,
+    #1d1e2c
+  );
 }
