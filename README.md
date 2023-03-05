@@ -1,10 +1,10 @@
 # Taskify|
 
-This is a Todo List application built using Redux Toolkit, Redux Persist, Redux Icons, Tailwind CSS, and Framer Motion. The app allows you to add, edit, and delete tasks, mark them as completed, and filter them by category. The state is managed using Redux Toolkit, with data persisting across sessions through Redux Persist. The UI is designed with Tailwind CSS, with icons provided by Redux Icons. Animations and transitions are implemented using Framer Motion.
+This is a Todo List application built using Redux Toolkit, Redux Persist, Redux Icons, Tailwind CSS, and Framer Motion. The app allows you to add and delete tasks and filter them by category. The state is managed using Redux Toolkit, with data persisting across sessions through Redux Persist. The UI is designed with Tailwind CSS, with icons provided by Redux Icons. Animations and transitions are implemented using Framer Motion.
 
 ## Features
 
-- Add, edit, and delete tasks
+- Add and delete tasks
 - Filter tasks by category
 - Persist state across sessions
 - Beautifully designed UI with Tailwind CSS
